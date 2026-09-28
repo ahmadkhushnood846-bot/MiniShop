@@ -1,0 +1,125 @@
+.navbar {
+  width: 100%;
+  min-height: 70px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  background-color: #eee9e4;
+  color: #111;
+
+  border-bottom: 1px solid #e5e0dc;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo a {
+  text-decoration: none;
+  color: #111;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #111;
+  font-size: 20px;
+}
+
+.cart-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+
+  background: #111;
+  color: #fff;
+
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Menu button hidden on desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #111;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 0;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 599px) {
+
+  .navbar {
+    min-height: 60px;
+    padding: 0 16px;
+  }
+
+  .logo a {
+    font-size: 28px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links.active {
+    display: flex;
+
+    position: absolute;
+    top: 60px;
+    left: 0;
+
+    width: 100%;
+
+    flex-direction: column;
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 25px 0;
+
+    background: #fff;
+    border-bottom: 1px solid #eee;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    z-index: 1000;
+  }
+
+  .nav-links.active a {
+    font-size: 18px;
+  }
+}

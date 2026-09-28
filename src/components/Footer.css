@@ -1,0 +1,189 @@
+/* =========================
+   Footer
+========================= */
+
+.footer {
+  width: 100%;
+  margin-top: 0;
+
+  background: #111;
+  color: #fff;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   Footer Container
+========================= */
+
+.footer-container {
+  width: 100%;
+  max-width: 1400px;
+
+  margin: 0 auto;
+  padding: 60px 40px;
+
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+
+  gap: 50px;
+}
+
+/* =========================
+   Brand
+========================= */
+
+.footer-brand {
+  max-width: 350px;
+}
+
+.footer-logo {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  color: #fff;
+
+  font-size: 32px;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.footer-brand p {
+  margin: 0;
+
+  color: #bdbdbd;
+
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* =========================
+   Footer Columns
+========================= */
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.footer-column h3 {
+  margin: 0 0 10px;
+
+  color: #fff;
+
+  font-size: 19px;
+}
+
+.footer-column a {
+  color: #bdbdbd;
+
+  font-size: 16px;
+
+  text-decoration: none;
+
+  transition: 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #fff;
+}
+
+.footer-column p {
+  margin: 0;
+
+  color: #bdbdbd;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* =========================
+   Footer Bottom
+========================= */
+
+.footer-bottom {
+  width: 100%;
+
+  padding: 20px 40px;
+
+  box-sizing: border-box;
+
+  border-top: 1px solid #333;
+
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+
+  color: #999;
+
+  font-size: 14px;
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 900px) {
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 40px;
+
+    padding: 50px 30px;
+  }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+}
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 599px) {
+
+  .footer {
+    margin-top:0px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    padding: 45px 25px;
+  }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  .footer-logo {
+    font-size: 28px;
+  }
+
+  .footer-column h3 {
+    font-size: 18px;
+  }
+
+  .footer-bottom {
+    padding: 18px 20px;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+}
