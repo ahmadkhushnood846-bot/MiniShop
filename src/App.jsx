@@ -9,6 +9,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import OrderSuccess from "./pages/OrderSuccess";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
     <BrowserRouter>
 
       <Navbar />
+
+      <ScrollToTop />
 
       <Routes>
 
