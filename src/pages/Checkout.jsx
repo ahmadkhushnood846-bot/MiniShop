@@ -1,110 +1,368 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
 import { CartContext } from "../context/CartContext";
+import { createOrder } from "../api/api";
+
 import "./Checkout.css";
 
+
 function Checkout() {
+
   const navigate = useNavigate();
-  const { cart, setCart } = useContext(CartContext);
+
+  const { cart, setCart } =
+    useContext(CartContext);
+
+
+  /* =========================
+     FORM DATA
+  ========================= */
 
   const [formData, setFormData] = useState({
+
     firstName: "",
+
     lastName: "",
+
     email: "",
+
     phone: "",
+
     address: "",
+
     city: "",
+
     postalCode: "",
+
   });
 
-  const [errors, setErrors] = useState({});
+
+  const [errors, setErrors] =
+    useState({});
+
+
+  const [isSubmitting, setIsSubmitting] =
+    useState(false);
+
+
+  /* =========================
+     HANDLE INPUT CHANGE
+  ========================= */
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+
+    const {
+      name,
+      value,
+    } = e.target;
+
+
+    setFormData((previous) => ({
+
+      ...previous,
+
+      [name]: value,
+
+    }));
+
+
+    setErrors((previous) => ({
+
+      ...previous,
+
+      [name]: "",
+
+    }));
+
   };
 
+
+  /* =========================
+     VALIDATE FORM
+  ========================= */
+
   const validateForm = () => {
+
     const newErrors = {};
 
+
     if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
+
+      newErrors.firstName =
+        "First name is required.";
+
     }
+
 
     if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
+
+      newErrors.lastName =
+        "Last name is required.";
+
     }
+
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Enter a valid email";
+
+      newErrors.email =
+        "Email is required.";
+
+    } else if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+        formData.email.trim()
+      )
+    ) {
+
+      newErrors.email =
+        "Enter a valid email.";
+
     }
+
 
     if (!formData.phone.trim()) {
-      newErrors.phone = "Phone number is required";
+
+      newErrors.phone =
+        "Phone number is required.";
+
     }
+
 
     if (!formData.address.trim()) {
-      newErrors.address = "Address is required";
+
+      newErrors.address =
+        "Address is required.";
+
     }
+
 
     if (!formData.city.trim()) {
-      newErrors.city = "City is required";
+
+      newErrors.city =
+        "City is required.";
+
     }
 
+
     if (!formData.postalCode.trim()) {
-      newErrors.postalCode = "Postal code is required";
+
+      newErrors.postalCode =
+        "Postal code is required.";
+
     }
+
 
     setErrors(newErrors);
 
-    return Object.keys(newErrors).length === 0;
+
+    return (
+      Object.keys(newErrors).length === 0
+    );
+
   };
 
-  const handleSubmit = (e) => {
+
+  /* =========================
+     SUBTOTAL
+  ========================= */
+
+  const subtotal = cart.reduce(
+
+    (total, item) =>
+
+      total +
+      Number(item.price) *
+      Number(item.quantity),
+
+    0
+
+  );
+
+
+  /* =========================
+     PLACE ORDER
+  ========================= */
+
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
+
 
     if (!validateForm()) {
       return;
     }
 
-    const orderId =
-      "MS-" + Math.floor(100000 + Math.random() * 900000);
 
-    setCart([]);
+    if (cart.length === 0) {
 
-    navigate("/order-success", {
-      state: {
-        orderId: orderId,
+      alert("Your cart is empty.");
+
+      return;
+
+    }
+
+
+    setIsSubmitting(true);
+
+
+    /* =========================
+       ORDER DATA
+    ========================= */
+
+    const orderData = {
+
+      customer: {
+
+        firstName:
+          formData.firstName.trim(),
+
+        lastName:
+          formData.lastName.trim(),
+
+        email:
+          formData.email.trim(),
+
+        phone:
+          formData.phone.trim(),
+
+        address:
+          formData.address.trim(),
+
+        city:
+          formData.city.trim(),
+
+        postalCode:
+          formData.postalCode.trim(),
+
       },
-    });
+
+
+      items: cart.map((item) => ({
+
+        id:
+          item.id,
+
+        name:
+          item.name,
+
+        price:
+          Number(item.price),
+
+        quantity:
+          Number(item.quantity),
+
+        image:
+          item.image,
+
+      })),
+
+
+      subtotal:
+        Number(subtotal.toFixed(2)),
+
+
+      shippingCost:
+        0,
+
+
+      total:
+        Number(subtotal.toFixed(2)),
+
+    };
+
+
+    try {
+
+      /* =========================
+         SEND ORDER TO API
+      ========================= */
+
+      const savedOrder =
+        await createOrder(orderData);
+
+
+      /* =========================
+         CLEAR CART
+      ========================= */
+
+      setCart([]);
+
+
+      /* =========================
+         GO TO SUCCESS PAGE
+      ========================= */
+
+      navigate(
+        "/order-success",
+        {
+          state: {
+            orderId:
+              savedOrder.id,
+          },
+        }
+      );
+
+
+    } catch (error) {
+
+      console.error(
+        "Order Error:",
+        error
+      );
+
+
+      alert(
+        error.message ||
+        "Unable to place order. Please try again."
+      );
+
+
+    } finally {
+
+      setIsSubmitting(false);
+
+    }
+
   };
 
-  const subtotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
 
   return (
+
     <div className="checkout-page">
 
-      <h1>Checkout</h1>
+
+      {/* =========================
+          PAGE TITLE
+      ========================= */}
+
+      <h1>
+        Checkout
+      </h1>
+
 
       <div className="checkout-container">
 
-        {/* Checkout Form */}
+
+        {/* =========================
+            CHECKOUT FORM
+        ========================= */}
 
         <form
           className="checkout-form"
           onSubmit={handleSubmit}
         >
 
-          <h2>Customer Information</h2>
+          <h2>
+            Customer Information
+          </h2>
+
+
+          {/* =========================
+              FIRST NAME
+          ========================= */}
 
           <div className="form-group">
+
             <label htmlFor="firstName">
               First Name
             </label>
@@ -119,13 +377,22 @@ function Checkout() {
             />
 
             {errors.firstName && (
+
               <p className="form-error">
                 {errors.firstName}
               </p>
+
             )}
+
           </div>
 
+
+          {/* =========================
+              LAST NAME
+          ========================= */}
+
           <div className="form-group">
+
             <label htmlFor="lastName">
               Last Name
             </label>
@@ -140,13 +407,22 @@ function Checkout() {
             />
 
             {errors.lastName && (
+
               <p className="form-error">
                 {errors.lastName}
               </p>
+
             )}
+
           </div>
 
+
+          {/* =========================
+              EMAIL
+          ========================= */}
+
           <div className="form-group">
+
             <label htmlFor="email">
               Email
             </label>
@@ -161,13 +437,22 @@ function Checkout() {
             />
 
             {errors.email && (
+
               <p className="form-error">
                 {errors.email}
               </p>
+
             )}
+
           </div>
 
+
+          {/* =========================
+              PHONE
+          ========================= */}
+
           <div className="form-group">
+
             <label htmlFor="phone">
               Phone Number
             </label>
@@ -182,13 +467,22 @@ function Checkout() {
             />
 
             {errors.phone && (
+
               <p className="form-error">
                 {errors.phone}
               </p>
+
             )}
+
           </div>
 
+
+          {/* =========================
+              ADDRESS
+          ========================= */}
+
           <div className="form-group">
+
             <label htmlFor="address">
               Address
             </label>
@@ -203,15 +497,27 @@ function Checkout() {
             />
 
             {errors.address && (
+
               <p className="form-error">
                 {errors.address}
               </p>
+
             )}
+
           </div>
+
+
+          {/* =========================
+              CITY + POSTAL CODE
+          ========================= */}
 
           <div className="form-row">
 
+
+            {/* CITY */}
+
             <div className="form-group">
+
               <label htmlFor="city">
                 City
               </label>
@@ -226,13 +532,20 @@ function Checkout() {
               />
 
               {errors.city && (
+
                 <p className="form-error">
                   {errors.city}
                 </p>
+
               )}
+
             </div>
 
+
+            {/* POSTAL CODE */}
+
             <div className="form-group">
+
               <label htmlFor="postalCode">
                 Postal Code
               </label>
@@ -247,31 +560,50 @@ function Checkout() {
               />
 
               {errors.postalCode && (
+
                 <p className="form-error">
                   {errors.postalCode}
                 </p>
+
               )}
+
             </div>
 
           </div>
 
+
+          {/* =========================
+              PLACE ORDER
+          ========================= */}
+
           <button
             className="place-order-btn"
             type="submit"
+            disabled={isSubmitting}
           >
-            Place Order
+
+            {isSubmitting
+              ? "Placing Order..."
+              : "Place Order"}
+
           </button>
 
         </form>
 
 
-        {/* Order Summary */}
+        {/* =========================
+            ORDER SUMMARY
+        ========================= */}
 
         <div className="checkout-summary">
 
-          <h2>Order Summary</h2>
+          <h2>
+            Order Summary
+          </h2>
+
 
           {cart.map((item) => (
+
             <div
               className="checkout-summary-item"
               key={item.id}
@@ -285,25 +617,44 @@ function Checkout() {
                 />
 
                 <div>
-                  <h3>{item.name}</h3>
+
+                  <h3>
+                    {item.name}
+                  </h3>
 
                   <p>
                     Qty: {item.quantity}
                   </p>
+
                 </div>
 
               </div>
 
+
               <strong>
-                ${(item.price * item.quantity).toFixed(2)}
+
+                $
+                {(
+                  Number(item.price) *
+                  Number(item.quantity)
+                ).toFixed(2)}
+
               </strong>
 
             </div>
+
           ))}
+
+
+          {/* =========================
+              TOTAL
+          ========================= */}
 
           <div className="checkout-summary-total">
 
-            <span>Subtotal</span>
+            <span>
+              Subtotal
+            </span>
 
             <strong>
               ${subtotal.toFixed(2)}
@@ -313,10 +664,14 @@ function Checkout() {
 
         </div>
 
+
       </div>
 
     </div>
+
   );
+
 }
+
 
 export default Checkout;
