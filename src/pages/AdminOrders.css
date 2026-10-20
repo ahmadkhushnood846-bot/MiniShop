@@ -1,0 +1,1051 @@
+/* =====================================================
+   ADMIN ORDERS
+===================================================== */
+
+.admin-orders {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.admin-orders-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.admin-orders-header h1 {
+  margin: 0 0 8px;
+  font-size: 48px;
+  line-height: 1.1;
+  color: #111;
+}
+
+.admin-orders-header p {
+  margin: 0;
+  color: #555;
+  font-size: 19px;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back-admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #111;
+  color: #fff;
+
+  padding: 16px 28px;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  box-sizing: border-box;
+}
+
+.back-admin-btn:hover {
+  background: #000;
+}
+
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.orders-toolbar {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 12px;
+}
+
+.orders-toolbar input {
+  flex: 1;
+
+  width: 100%;
+  height: 48px;
+
+  padding: 0 14px;
+
+  border: 1px solid #ccc;
+  border-radius: 9px;
+
+  background: #fff;
+
+  font-size: 16px;
+
+  outline: none;
+
+  box-sizing: border-box;
+}
+
+.orders-toolbar input:focus {
+  border-color: #111;
+}
+
+.orders-toolbar select {
+  width: 180px;
+  height: 48px;
+
+  padding: 0 12px;
+
+  border: 1px solid #ccc;
+  border-radius: 9px;
+
+  background: #fff;
+
+  font-size: 16px;
+
+  outline: none;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   RESULT COUNT
+===================================================== */
+
+.orders-result-count {
+  margin: 0 0 14px;
+
+  color: #222;
+
+  font-size: 17px;
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.admin-orders-error {
+  width: 100%;
+
+  margin-bottom: 20px;
+  padding: 15px 18px;
+
+  background: #fee2e2;
+  color: #b91c1c;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 10px;
+
+  font-size: 15px;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   TABLE WRAPPER
+===================================================== */
+
+.admin-orders-table-wrapper {
+  width: 100%;
+
+  background: #fff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.admin-orders-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  margin: 0;
+}
+
+
+/* =====================================================
+   DESKTOP COLUMN WIDTHS
+===================================================== */
+
+.admin-orders-table th:nth-child(1),
+.admin-orders-table td:nth-child(1) {
+  width: 15%;
+}
+
+.admin-orders-table th:nth-child(2),
+.admin-orders-table td:nth-child(2) {
+  width: 23%;
+}
+
+.admin-orders-table th:nth-child(3),
+.admin-orders-table td:nth-child(3) {
+  width: 14%;
+}
+
+.admin-orders-table th:nth-child(4),
+.admin-orders-table td:nth-child(4) {
+  width: 8%;
+}
+
+.admin-orders-table th:nth-child(5),
+.admin-orders-table td:nth-child(5) {
+  width: 10%;
+}
+
+.admin-orders-table th:nth-child(6),
+.admin-orders-table td:nth-child(6) {
+  width: 15%;
+}
+
+.admin-orders-table th:nth-child(7),
+.admin-orders-table td:nth-child(7) {
+  width: 15%;
+}
+
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.admin-orders-table th {
+  padding: 20px 18px;
+
+  background: #fafafa;
+
+  color: #111;
+
+  border-bottom: 1px solid #ddd;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  text-align: left;
+
+  white-space: nowrap;
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   TABLE CELLS
+===================================================== */
+
+.admin-orders-table td {
+  padding: 22px 18px;
+
+  color: #222;
+
+  border-bottom: 1px solid #eee;
+
+  font-size: 15px;
+
+  vertical-align: middle;
+
+  box-sizing: border-box;
+
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.admin-orders-table tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =====================================================
+   ORDER ID
+===================================================== */
+
+.admin-orders-table td:first-child {
+  overflow: hidden;
+}
+
+.admin-orders-table td:first-child strong {
+  display: block;
+
+  width: 100%;
+
+  color: #111;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  white-space: nowrap !important;
+
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   CUSTOMER
+===================================================== */
+
+.order-customer {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  min-width: 0;
+
+  overflow: hidden;
+}
+
+.order-customer strong {
+  display: block;
+
+  width: 100%;
+
+  color: #111;
+
+  font-size: 15px;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+.order-customer span {
+  display: block;
+
+  width: 100%;
+
+  color: #666;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  white-space: normal;
+
+  word-break: normal;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =====================================================
+   TOTAL
+===================================================== */
+
+.admin-orders-table td:nth-child(5) {
+  white-space: nowrap;
+}
+
+.admin-orders-table td:nth-child(5) strong {
+  font-size: 17px;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.order-status-select {
+  width: 150px;
+  max-width: 100%;
+
+  height: 46px;
+
+  padding: 0 12px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  font-size: 15px;
+
+  outline: none;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+}
+
+.order-status-select:focus {
+  border-color: #111;
+}
+
+
+/* =====================================================
+   STATUS COLORS
+===================================================== */
+
+.order-status-select.pending {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.order-status-select.confirmed {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.order-status-select.processing {
+  background: #f5f3ff;
+  color: #6d28d9;
+}
+
+.order-status-select.shipped {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.order-status-select.delivered {
+  background: #e7f7e9;
+  color: #15803d;
+}
+
+.order-status-select.cancelled {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.order-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+}
+
+.view-order-btn,
+.delete-order-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  height: 44px;
+
+  padding: 0 14px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  box-sizing: border-box;
+}
+
+.view-order-btn {
+  background: #111;
+}
+
+.view-order-btn:hover {
+  background: #000;
+}
+
+.delete-order-btn {
+  background: #dc2626;
+}
+
+.delete-order-btn:hover {
+  background: #b91c1c;
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.admin-orders-empty {
+  width: 100%;
+
+  padding: 60px 30px;
+
+  background: #fff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 16px;
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+.admin-orders-empty h2 {
+  margin: 0 0 10px;
+
+  color: #111;
+
+  font-size: 28px;
+}
+
+.admin-orders-empty p {
+  margin: 0;
+
+  color: #666;
+
+  font-size: 16px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .admin-orders {
+    padding: 35px 25px;
+  }
+
+  .admin-orders-header h1 {
+    font-size: 40px;
+  }
+
+  .admin-orders-header p {
+    font-size: 17px;
+  }
+
+  .admin-orders-table th,
+  .admin-orders-table td {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .admin-orders-table th {
+    font-size: 14px;
+  }
+
+  .admin-orders-table td {
+    font-size: 14px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .admin-orders {
+    width: 100%;
+
+    padding: 20px 14px;
+
+    box-sizing: border-box;
+  }
+
+
+  /* HEADER */
+
+  .admin-orders-header {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+  }
+
+  .admin-orders-header h1 {
+    font-size: 32px;
+  }
+
+  .admin-orders-header p {
+    font-size: 16px;
+  }
+
+
+  /* BACK BUTTON */
+
+  .back-admin-btn {
+    width: 100%;
+
+    min-height: 50px;
+  }
+
+
+  /* TOOLBAR */
+
+  .orders-toolbar {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 10px;
+  }
+
+  .orders-toolbar input {
+    width: 100%;
+
+    flex: none;
+  }
+
+  .orders-toolbar select {
+    width: 100%;
+  }
+
+
+  /* COUNT */
+
+  .orders-result-count {
+    font-size: 16px;
+
+    margin-bottom: 12px;
+  }
+
+
+  /* REMOVE TABLE CONTAINER */
+
+  .admin-orders-table-wrapper {
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    overflow: visible;
+  }
+
+
+  /* =================================================
+     IMPORTANT:
+     TURN TABLE COMPLETELY INTO BLOCKS
+  ================================================= */
+
+  .admin-orders-table {
+    display: block;
+
+    width: 100%;
+
+    table-layout: auto;
+
+    border-collapse: separate;
+  }
+
+  .admin-orders-table thead {
+    display: none;
+  }
+
+  .admin-orders-table tbody {
+    display: block;
+
+    width: 100%;
+  }
+
+
+  /* =================================================
+     ORDER CARD
+  ================================================= */
+
+  .admin-orders-table tbody tr {
+    display: block;
+
+    width: 100%;
+
+    margin: 0 0 16px;
+
+    padding: 15px;
+
+    background: #fff;
+
+    border: 1px solid #ddd;
+
+    border-radius: 14px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+  }
+
+
+  /* =================================================
+     RESET ALL DESKTOP WIDTHS
+  ================================================= */
+
+  .admin-orders-table th,
+  .admin-orders-table td,
+  .admin-orders-table th:nth-child(1),
+  .admin-orders-table td:nth-child(1),
+  .admin-orders-table th:nth-child(2),
+  .admin-orders-table td:nth-child(2),
+  .admin-orders-table th:nth-child(3),
+  .admin-orders-table td:nth-child(3),
+  .admin-orders-table th:nth-child(4),
+  .admin-orders-table td:nth-child(4),
+  .admin-orders-table th:nth-child(5),
+  .admin-orders-table td:nth-child(5),
+  .admin-orders-table th:nth-child(6),
+  .admin-orders-table td:nth-child(6),
+  .admin-orders-table th:nth-child(7),
+  .admin-orders-table td:nth-child(7) {
+    width: 100%;
+
+    max-width: 100%;
+
+    min-width: 0;
+  }
+
+
+  /* =================================================
+     EACH ROW
+  ================================================= */
+
+  .admin-orders-table tbody tr td {
+    display: grid;
+
+    grid-template-columns: 90px minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    min-width: 0;
+
+    max-width: 100%;
+
+    padding: 13px 0;
+
+    border: none;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    word-break: normal !important;
+
+    overflow-wrap: normal !important;
+  }
+
+
+  .admin-orders-table tbody tr td:not(:last-child) {
+    border-bottom: 1px solid #eee;
+  }
+
+
+  /* =================================================
+     LABEL
+  ================================================= */
+
+  .admin-orders-table tbody tr td::before {
+    content: attr(data-label);
+
+    display: block;
+
+    width: 90px;
+
+    color: #555;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =================================================
+     ORDER ID - FIXED
+  ================================================= */
+
+  .admin-orders-table tbody tr td:first-child {
+    display: grid;
+
+    grid-template-columns: 90px minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 12px;
+  }
+
+  .admin-orders-table tbody tr td:first-child strong {
+    display: block;
+
+    width: 100%;
+
+    min-width: 0;
+
+    max-width: 100%;
+
+    color: #111;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    text-align: left;
+
+    white-space: nowrap !important;
+
+    word-break: normal !important;
+
+    overflow-wrap: normal !important;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+
+  /* =================================================
+     CUSTOMER
+  ================================================= */
+
+  .admin-orders-table tbody tr td:nth-child(2) {
+    align-items: start;
+  }
+
+  .order-customer {
+    width: 100%;
+
+    min-width: 0;
+
+    max-width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 4px;
+
+    overflow: hidden;
+  }
+
+  .order-customer strong {
+    width: 100%;
+
+    min-width: 0;
+
+    max-width: 100%;
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+  .order-customer span {
+    width: 100%;
+
+    min-width: 0;
+
+    max-width: 100%;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    white-space: normal;
+
+    word-break: normal !important;
+
+    overflow-wrap: anywhere !important;
+  }
+
+
+  /* =================================================
+     DATE
+  ================================================= */
+
+  .admin-orders-table tbody tr td:nth-child(3) {
+    white-space: nowrap;
+  }
+
+
+  /* =================================================
+     ITEMS
+  ================================================= */
+
+  .admin-orders-table tbody tr td:nth-child(4) {
+    white-space: nowrap;
+  }
+
+
+  /* =================================================
+     TOTAL
+  ================================================= */
+
+  .admin-orders-table tbody tr td:nth-child(5) {
+    white-space: nowrap;
+  }
+
+  .admin-orders-table tbody tr td:nth-child(5) strong {
+    white-space: nowrap;
+  }
+
+
+  /* =================================================
+     STATUS
+  ================================================= */
+
+  .admin-orders-table tbody tr td:nth-child(6) {
+    display: grid;
+
+    grid-template-columns: 90px minmax(0, 1fr);
+  }
+
+  .order-status-select {
+    width: 100%;
+
+    max-width: 180px;
+
+    height: 45px;
+
+    font-size: 14px;
+  }
+
+
+  /* =================================================
+     ACTIONS
+  ================================================= */
+
+  .admin-orders-table tbody tr td:last-child {
+    display: block;
+
+    width: 100%;
+
+    padding-top: 16px;
+
+    overflow: visible;
+  }
+
+  .admin-orders-table tbody tr td:last-child::before {
+    display: block;
+
+    width: auto;
+
+    margin-bottom: 10px;
+  }
+
+  .order-actions {
+    display: flex;
+
+    width: 100%;
+
+    gap: 8px;
+
+    flex-wrap: nowrap;
+  }
+
+  .view-order-btn,
+  .delete-order-btn {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 45px;
+  }
+
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+
+  .admin-orders {
+    padding: 16px 10px;
+  }
+
+  .admin-orders-table tbody tr {
+    padding: 13px;
+  }
+
+  .admin-orders-table tbody tr td,
+  .admin-orders-table tbody tr td:first-child,
+  .admin-orders-table tbody tr td:nth-child(6) {
+    grid-template-columns: 78px minmax(0, 1fr);
+  }
+
+  .admin-orders-table tbody tr td::before {
+    width: 78px;
+  }
+
+  .admin-orders-table tbody tr td:first-child strong {
+    font-size: 13px;
+  }
+
+}

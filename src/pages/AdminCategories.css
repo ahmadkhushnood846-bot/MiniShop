@@ -1,0 +1,645 @@
+.admin-categories {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+
+/* ========================= */
+/* HEADER */
+/* ========================= */
+
+.admin-categories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.admin-categories-header h1 {
+  margin: 0 0 8px;
+  font-size: 42px;
+  line-height: 1.2;
+  color: #111;
+}
+
+.admin-categories-header p {
+  margin: 0;
+  color: #555;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.back-admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 16px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  transition: background 0.2s ease;
+}
+
+.back-admin-btn:hover {
+  background: #000;
+}
+
+
+/* ========================= */
+/* FORM CARD */
+/* ========================= */
+
+.category-form-card {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-sizing: border-box;
+}
+
+.category-form-header {
+  margin-bottom: 25px;
+}
+
+.category-form-header h2 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  line-height: 1.3;
+  color: #111;
+}
+
+.category-form-header p {
+  margin: 0;
+  color: #666;
+  font-size: 16px;
+}
+
+
+/* ========================= */
+/* FORM */
+/* ========================= */
+
+.category-form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.category-form-group {
+  width: 100%;
+  margin-bottom: 22px;
+}
+
+.category-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #222;
+  font-size: 16px;
+}
+
+.category-form-group input,
+.category-form-group textarea,
+.category-form-group select {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  line-height: 1.4;
+  box-sizing: border-box;
+  outline: none;
+  background: #fff;
+  color: #111;
+}
+
+.category-form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.category-form-group input:focus,
+.category-form-group textarea:focus,
+.category-form-group select:focus {
+  border-color: #111;
+}
+
+
+/* ========================= */
+/* ERROR */
+/* ========================= */
+
+.category-form-error {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 14px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+
+/* ========================= */
+/* FORM BUTTONS */
+/* ========================= */
+
+.category-form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.save-category-btn,
+.cancel-category-btn {
+  min-height: 46px;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.save-category-btn {
+  background: #111;
+  color: #fff;
+}
+
+.save-category-btn:hover {
+  background: #000;
+}
+
+.cancel-category-btn {
+  background: #666;
+  color: #fff;
+}
+
+.cancel-category-btn:hover {
+  background: #555;
+}
+
+.save-category-btn:active,
+.cancel-category-btn:active,
+.edit-category-btn:active,
+.delete-category-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* ========================= */
+/* SEARCH */
+/* ========================= */
+
+.categories-toolbar {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-sizing: border-box;
+}
+
+.categories-toolbar input {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  padding: 14px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.categories-toolbar input:focus {
+  border-color: #111;
+}
+
+
+/* ========================= */
+/* TABLE */
+/* ========================= */
+
+.admin-categories-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.admin-categories-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.admin-categories-table th {
+  background: #fafafa;
+  padding: 18px;
+  text-align: left;
+  font-size: 17px;
+  color: #111;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+.admin-categories-table td {
+  padding: 22px 18px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  color: #222;
+  vertical-align: middle;
+}
+
+.admin-categories-table tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* ========================= */
+/* STATUS */
+/* ========================= */
+
+.category-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.category-status.active {
+  background: #e7f7e9;
+  color: #15803d;
+}
+
+.category-status.inactive {
+  background: #f1f1f1;
+  color: #666;
+}
+
+
+/* ========================= */
+/* ACTIONS */
+/* ========================= */
+
+.category-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.edit-category-btn,
+.delete-category-btn {
+  border: none;
+  color: #fff;
+  min-height: 42px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.edit-category-btn {
+  background: #666;
+}
+
+.edit-category-btn:hover {
+  background: #555;
+}
+
+.delete-category-btn {
+  background: #dc2626;
+}
+
+.delete-category-btn:hover {
+  background: #b91c1c;
+}
+
+
+/* ========================= */
+/* EMPTY */
+/* ========================= */
+
+.admin-category-empty {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 50px 25px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.admin-category-empty h2 {
+  margin: 0 0 8px;
+  color: #111;
+}
+
+.admin-category-empty p {
+  margin: 0;
+  color: #666;
+}
+
+
+/* ========================= */
+/* LARGE TABLET */
+/* ========================= */
+
+@media (max-width: 1100px) {
+
+  .admin-categories {
+    padding: 40px 30px;
+  }
+
+  .admin-categories-header h1 {
+    font-size: 38px;
+  }
+
+  .admin-categories-table {
+    min-width: 650px;
+  }
+}
+
+
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media (max-width: 900px) {
+
+  .admin-categories {
+    padding: 30px 20px;
+  }
+
+  .admin-categories-header {
+    gap: 20px;
+  }
+
+  .admin-categories-header h1 {
+    font-size: 34px;
+  }
+
+  .admin-categories-header p {
+    font-size: 17px;
+  }
+
+  .category-form-card {
+    padding: 25px;
+  }
+
+  .category-form-row {
+    gap: 18px;
+  }
+
+  .admin-categories-table th,
+  .admin-categories-table td {
+    padding: 16px 14px;
+  }
+}
+
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 600px) {
+
+  .admin-categories {
+    padding: 20px 14px;
+  }
+
+
+  /* Header */
+
+  .admin-categories-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    margin-bottom: 25px;
+  }
+
+  .admin-categories-header h1 {
+    font-size: 30px;
+  }
+
+  .admin-categories-header p {
+    font-size: 16px;
+  }
+
+  .back-admin-btn {
+    width: 100%;
+  }
+
+
+  /* Form */
+
+  .category-form-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .category-form-header {
+    margin-bottom: 20px;
+  }
+
+  .category-form-header h2 {
+    font-size: 23px;
+  }
+
+  .category-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .category-form-group {
+    margin-bottom: 18px;
+  }
+
+  .category-form-group input,
+  .category-form-group textarea,
+  .category-form-group select {
+    font-size: 16px;
+    padding: 13px;
+  }
+
+
+  /* Form Buttons */
+
+  .category-form-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .save-category-btn,
+  .cancel-category-btn {
+    width: 100%;
+  }
+
+
+  /* Search */
+
+  .categories-toolbar {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .categories-toolbar input {
+    min-height: 48px;
+  }
+
+
+  /* Mobile Table */
+
+  .admin-categories-table-wrapper {
+    border: none;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .admin-categories-table {
+    display: block;
+    min-width: 0;
+  }
+
+  .admin-categories-table thead {
+    display: none;
+  }
+
+  .admin-categories-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-categories-table tr {
+    display: block;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+  }
+
+  .admin-categories-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    font-size: 15px;
+    line-height: 1.5;
+    box-sizing: border-box;
+  }
+
+  .admin-categories-table td:not(:last-child) {
+    border-bottom: 1px solid #eee;
+  }
+
+  .admin-categories-table td::before {
+    content: attr(data-label);
+    min-width: 90px;
+    font-weight: 600;
+    color: #555;
+    flex-shrink: 0;
+  }
+
+  .admin-categories-table td strong {
+    text-align: right;
+  }
+
+  .admin-categories-table td[data-label="Description"] {
+    align-items: flex-start;
+  }
+
+  .admin-categories-table td[data-label="Description"] {
+    overflow-wrap: anywhere;
+  }
+
+
+  /* Mobile Actions */
+
+  .category-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  .edit-category-btn,
+  .delete-category-btn {
+    flex: 1;
+    min-height: 42px;
+  }
+
+
+  /* Empty */
+
+  .admin-category-empty {
+    padding: 40px 20px;
+  }
+
+}
+
+
+/* ========================= */
+/* VERY SMALL MOBILE */
+/* ========================= */
+
+@media (max-width: 380px) {
+
+  .admin-categories {
+    padding: 16px 10px;
+  }
+
+  .category-form-card {
+    padding: 16px;
+  }
+
+  .admin-categories-header h1 {
+    font-size: 27px;
+  }
+
+  .category-form-header h2 {
+    font-size: 21px;
+  }
+
+  .admin-categories-table tr {
+    padding: 13px;
+  }
+
+  .admin-categories-table td {
+    gap: 10px;
+    font-size: 14px;
+  }
+
+  .admin-categories-table td::before {
+    min-width: 75px;
+  }
+}

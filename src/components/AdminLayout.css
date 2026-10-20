@@ -1,0 +1,535 @@
+/* =========================
+   ADMIN LAYOUT
+========================= */
+
+.admin-layout {
+  display: flex;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background: #f5f5f5;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.admin-sidebar {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 250px;
+
+  background: #111;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 30px 20px;
+
+  box-sizing: border-box;
+
+  z-index: 1000;
+
+  overflow-y: auto;
+}
+
+
+/* =========================
+   SIDEBAR LOGO
+========================= */
+
+.sidebar-logo {
+  font-size: 28px;
+  font-weight: 700;
+
+  text-align: center;
+
+  padding: 0 15px 30px;
+
+  border-bottom: 1px solid #333;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   SIDEBAR NAVIGATION
+========================= */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-top: 30px;
+
+  flex-shrink: 0;
+}
+
+
+.sidebar-nav a {
+  display: block;
+
+  padding: 14px 16px;
+
+  color: #ccc;
+
+  text-decoration: none;
+
+  font-size: 16px;
+
+  border-radius: 8px;
+
+  transition: all 0.2s ease;
+}
+
+
+.sidebar-nav a:hover {
+  background: #2a2a2a;
+
+  color: white;
+}
+
+
+/* =========================
+   SIDEBAR BOTTOM
+========================= */
+
+.sidebar-bottom {
+  margin-top: auto;
+
+  padding-top: 20px;
+
+  border-top: 1px solid #333;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   VIEW STORE
+========================= */
+
+.sidebar-bottom a {
+  display: block;
+
+  width: 100%;
+
+  padding: 14px 16px;
+
+  color: #ccc;
+
+  text-decoration: none;
+
+  text-align: center;
+
+  font-size: 16px;
+
+  border-radius: 8px;
+
+  transition: 0.2s ease;
+
+  box-sizing: border-box;
+}
+
+
+.sidebar-bottom a:hover {
+  background: #2a2a2a;
+
+  color: white;
+}
+
+
+/* =========================
+   LOGOUT BUTTON
+========================= */
+
+.logout-btn {
+  display: block;
+
+  width: 100%;
+
+  padding: 14px 16px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #ccc;
+
+  text-align: center;
+
+  font-size: 16px;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+  box-sizing: border-box;
+}
+
+
+.logout-btn:hover {
+  background: #2a2a2a;
+
+  color: white;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.admin-content {
+  width: calc(100% - 250px);
+
+  min-height: 100vh;
+
+  margin-left: 250px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   MOBILE MENU BUTTON
+========================= */
+
+.mobile-menu-btn {
+  display: none;
+
+  position: fixed;
+
+  top: 18px;
+  left: 18px;
+
+  width: 46px;
+  height: 46px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #111;
+
+  cursor: pointer;
+
+  z-index: 1200;
+
+  padding: 10px;
+
+  box-sizing: border-box;
+}
+
+
+.mobile-menu-btn span {
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  background: white;
+
+  margin: 5px 0;
+
+  border-radius: 2px;
+}
+
+
+/* =========================
+   SIDEBAR OVERLAY
+========================= */
+
+.sidebar-overlay {
+  display: none;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+  .admin-sidebar {
+    width: 210px;
+  }
+
+
+  .admin-content {
+    width: calc(100% - 210px);
+
+    margin-left: 210px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .admin-layout {
+    display: block;
+
+    width: 100%;
+
+    min-height: 100vh;
+  }
+
+
+  /* =========================
+     MOBILE MENU BUTTON
+  ========================= */
+
+  .mobile-menu-btn {
+    display: block;
+
+    top: 18px;
+    left: 18px;
+
+    width: 46px;
+    height: 46px;
+  }
+
+
+  /* =========================
+     SIDEBAR
+  ========================= */
+
+  .admin-sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 270px;
+
+    min-height: 100vh;
+
+    padding: 25px 20px;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.3s ease;
+
+    box-shadow:
+      5px 0 20px rgba(0, 0, 0, 0.2);
+
+    z-index: 1000;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+  }
+
+
+  .admin-sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+
+  /* =========================
+     MOBILE LOGO
+  ========================= */
+
+  .sidebar-logo {
+    font-size: 26px;
+
+    padding-bottom: 22px;
+  }
+
+
+  /* =========================
+     MOBILE NAVIGATION
+  ========================= */
+
+  .sidebar-nav {
+    margin-top: 20px;
+
+    gap: 4px;
+  }
+
+
+  .sidebar-nav a {
+    padding: 13px 14px;
+
+    font-size: 16px;
+  }
+
+
+  /* =========================
+     MOBILE BOTTOM
+     
+     Do NOT use margin-top:auto
+     here because it creates
+     too much empty space.
+  ========================= */
+
+  .sidebar-bottom {
+    margin-top: 30px;
+
+    padding-top: 18px;
+
+    gap: 6px;
+
+    flex-shrink: 0;
+  }
+
+
+  .sidebar-bottom a,
+  .logout-btn {
+    padding: 13px 14px;
+
+    font-size: 16px;
+  }
+
+
+  /* =========================
+     OVERLAY
+  ========================= */
+
+  .sidebar-overlay {
+    display: block;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    z-index: 900;
+  }
+
+
+  /* =========================
+     MAIN CONTENT
+  ========================= */
+
+  .admin-content {
+    width: 100%;
+
+    margin-left: 0;
+
+    min-height: 100vh;
+
+    padding-top: 75px;
+
+    box-sizing: border-box;
+  }
+
+
+  /* =========================
+     MAIN HEADINGS
+  ========================= */
+
+  .admin-content h1 {
+    text-align: center;
+  }
+
+
+  /* =========================
+     CONTENT
+  ========================= */
+
+  .admin-content > * {
+    box-sizing: border-box;
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 380px) {
+
+  .mobile-menu-btn {
+    width: 42px;
+
+    height: 42px;
+
+    top: 15px;
+
+    left: 15px;
+  }
+
+
+  .admin-sidebar {
+    width: 250px;
+
+    padding: 22px 16px;
+  }
+
+
+  .admin-content {
+    padding-top: 70px;
+  }
+
+
+  .admin-content h1 {
+    text-align: center;
+  }
+
+
+  .admin-content p {
+    text-align: center;
+  }
+
+
+  .sidebar-logo {
+    font-size: 24px;
+
+    padding-bottom: 18px;
+  }
+
+
+  .sidebar-nav {
+    margin-top: 18px;
+
+    gap: 2px;
+  }
+
+
+  .sidebar-nav a {
+    padding: 11px 12px;
+  }
+
+
+  .sidebar-bottom {
+    margin-top: 25px;
+
+    padding-top: 15px;
+  }
+
+
+  .sidebar-bottom a,
+  .logout-btn {
+    padding: 11px 12px;
+  }
+
+}
