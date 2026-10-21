@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { getOrderById } from "../api/api";
 import "./AdminOrderDetails.css";
-
-const API_BASE_URL = "http://localhost:5000/api";
 
 function AdminOrderDetails() {
   const { id } = useParams();
@@ -21,43 +20,34 @@ function AdminOrderDetails() {
       try {
         setLoading(true);
         setError("");
+        setOrder(null);
 
-        const response = await fetch(
-          `${API_BASE_URL}/orders/${id}`
-        );
-
-        if (!response.ok) {
-          if (response.status === 404) {
-            setOrder(null);
-            return;
-          }
-
-          throw new Error(
-            "Unable to load order."
-          );
-        }
-
-        const data = await response.json();
+        const data = await getOrderById(id);
 
         setOrder(data);
       } catch (err) {
-        console.error(
-          "FETCH ORDER ERROR:",
-          err
-        );
+        console.error("FETCH ORDER ERROR:", err);
+
+        if (err.message === "Order not found.") {
+          setOrder(null);
+          return;
+        }
 
         setError(
-          err.message ||
-            "Unable to load order."
+          err.message || "Unable to load order."
         );
       } finally {
         setLoading(false);
       }
     };
 
-    fetchOrder();
+    if (id) {
+      fetchOrder();
+    } else {
+      setLoading(false);
+      setError("Invalid order ID.");
+    }
   }, [id]);
-
 
   /* =========================
      LOADING
@@ -66,23 +56,16 @@ function AdminOrderDetails() {
   if (loading) {
     return (
       <div className="admin-order-details">
-
         <div className="order-not-found">
-
-          <h1>
-            Loading Order...
-          </h1>
+          <h1>Loading Order...</h1>
 
           <p>
             Please wait while the order is loading.
           </p>
-
         </div>
-
       </div>
     );
   }
-
 
   /* =========================
      ERROR
@@ -91,16 +74,10 @@ function AdminOrderDetails() {
   if (error) {
     return (
       <div className="admin-order-details">
-
         <div className="order-not-found">
+          <h1>Something Went Wrong</h1>
 
-          <h1>
-            Something Went Wrong
-          </h1>
-
-          <p>
-            {error}
-          </p>
+          <p>{error}</p>
 
           <button
             onClick={() =>
@@ -109,13 +86,10 @@ function AdminOrderDetails() {
           >
             Back To Orders
           </button>
-
         </div>
-
       </div>
     );
   }
-
 
   /* =========================
      ORDER NOT FOUND
@@ -124,12 +98,8 @@ function AdminOrderDetails() {
   if (!order) {
     return (
       <div className="admin-order-details">
-
         <div className="order-not-found">
-
-          <h1>
-            Order Not Found
-          </h1>
+          <h1>Order Not Found</h1>
 
           <p>
             The order you are looking for does not exist.
@@ -142,13 +112,10 @@ function AdminOrderDetails() {
           >
             Back To Orders
           </button>
-
         </div>
-
       </div>
     );
   }
-
 
   /* =========================
      ORDER TOTAL
@@ -156,7 +123,6 @@ function AdminOrderDetails() {
 
   const orderTotal =
     Number(order.total) || 0;
-
 
   /* =========================
      FORMAT DATE
@@ -168,7 +134,6 @@ function AdminOrderDetails() {
       ).toLocaleDateString("en-GB")
     : "N/A";
 
-
   return (
     <div className="admin-order-details">
 
@@ -179,7 +144,6 @@ function AdminOrderDetails() {
       <div className="order-details-header">
 
         <div>
-
           <h1>
             Order Details
           </h1>
@@ -187,7 +151,6 @@ function AdminOrderDetails() {
           <p>
             View complete information about this order.
           </p>
-
         </div>
 
         <button
